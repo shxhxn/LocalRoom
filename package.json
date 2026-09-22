@@ -1,0 +1,69 @@
+{
+  "name": "local-room",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A private desktop home for local AI models",
+  "author": "Shahan Samar",
+  "homepage": "https://github.com/shxhxn/LocalRoom#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shxhxn/LocalRoom.git"
+  },
+  "bugs": {
+    "url": "https://github.com/shxhxn/LocalRoom/issues"
+  },
+  "main": "dist-electron/main.js",
+  "scripts": {
+    "dev": "npm run build:electron && concurrently -k \"vite\" \"tsc -p tsconfig.electron.json --watch\" \"wait-on tcp:5173 && cross-env VITE_DEV_SERVER_URL=http://localhost:5173 electron .\"",
+    "build": "vite build && npm run build:electron",
+    "build:electron": "tsc -p tsconfig.electron.json",
+    "preview": "vite preview",
+    "start": "electron .",
+    "icon": "node scripts/generate-icon.cjs",
+    "dist": "npm run build && electron-builder --win nsis",
+    "smoke": "npm run build:electron && node scripts/smoke-test.cjs",
+    "typecheck": "tsc --noEmit && tsc -p tsconfig.electron.json --noEmit"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "latest",
+    "lucide-react": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "react-markdown": "latest",
+    "remark-gfm": "latest",
+    "tailwindcss": "^4.3.3"
+  },
+  "devDependencies": {
+    "@types/node": "latest",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "concurrently": "latest",
+    "cross-env": "latest",
+    "electron": "latest",
+    "electron-builder": "latest",
+    "typescript": "latest",
+    "vite": "latest",
+    "wait-on": "latest"
+  },
+  "build": {
+    "appId": "com.localroom.desktop",
+    "productName": "Local Room",
+    "electronDist": "node_modules/electron/dist",
+    "files": [
+      "dist/**/*",
+      "dist-electron/**/*",
+      "package.json"
+    ],
+    "directories": {
+      "output": "release"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "build/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  }
+}

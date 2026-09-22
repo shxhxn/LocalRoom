@@ -1,0 +1,12 @@
+node_modules/
+dist/
+dist-electron/
+release/
+output/
+tmp/
+run-project-extension/
+*.log
+.DS_Store
+.env
+.env.*
+!.env.example
