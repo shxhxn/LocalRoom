@@ -146,10 +146,13 @@ npm run smoke
 
 The smoke test checks live local-model discovery, context metadata, and request cancellation against Ollama when it is available.
 
+## License
+
+Local Room is open-source software licensed under the [MIT License](LICENSE).
+
 ## Creator
 
 Designed and developed by **Shahan Samar**.
 
 - [LinkedIn](https://www.linkedin.com/in/shahan-samar-603063371/)
 - [GitHub](https://github.com/shxhxn)
-

@@ -2,6 +2,7 @@
   "name": "local-room",
   "version": "1.0.0",
   "private": true,
+  "license": "MIT",
   "description": "A private desktop home for local AI models",
   "author": "Shahan Samar",
   "homepage": "https://github.com/shxhxn/LocalRoom#readme",
